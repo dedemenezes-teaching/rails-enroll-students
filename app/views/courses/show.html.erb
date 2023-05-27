@@ -1,7 +1,18 @@
-<h1>All about <%= @course.name %></h1>
+<div class="container">
+  <h1>All about <%= @course.name %></h1>
 
-<p><%= @course.description %></p>
+  <p><%= @course.description %></p>
 
-<div>
-  <%= link_to 'Enroll student', '#' %>
+  <h2>Students enrolled</h2>
+  <ul>
+    <% @course.enrollments.each do |enrollment| %>
+      <li><%= enrollment.student.username %> - Starting at: <%= enrollment.started_at %></li>
+    <% end %>
+  </ul>
+
+  <div>
+    <%= link_to 'Back to courses', courses_path, class: 'btn btn-secondary' %>
+    <%= link_to 'Enroll student', new_course_enrollment_path(@course), class: 'btn btn-primary' %>
+  </div>
+
 </div>

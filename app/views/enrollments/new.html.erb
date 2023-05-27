@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Enroll to <%= @course.name %></h1>
+
+  <%= simple_form_for [@course, @enrollment] do |f| %>
+    <%= f.input :started_at %>
+    <%= f.association :student, label_method: :username %>
+    <%= f.submit %>
+  <% end %>
+
+</div>
